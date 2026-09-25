@@ -252,6 +252,42 @@
     body.game-active, body.game-active * { -webkit-touch-callout:none; }
   }
 
+
+  /* === LARGER MOBILE TOUCH CONTROLS ===
+     Keep controls fixed to the screen while the camera/map moves.
+     Larger hit areas make movement and bomb placement easier on phones. */
+  @media (hover:none) and (pointer:coarse) {
+    .touch-dpad {
+      grid-template-columns:repeat(3,clamp(52px,10vh,68px));
+      grid-template-rows:repeat(3,clamp(52px,10vh,68px));
+      gap:4px;
+    }
+    .touch-dpad button {
+      min-width:52px;
+      min-height:52px;
+      border-radius:12px;
+      font-size:clamp(22px,5.5vh,32px);
+      border-width:2px;
+    }
+    .touch-bomb {
+      width:clamp(78px,15vh,98px);
+      height:clamp(78px,15vh,98px);
+      border-width:3px;
+      font-size:clamp(30px,7vh,42px);
+    }
+  }
+
+  @media (hover:none) and (pointer:coarse) and (orientation:landscape) {
+    .touch-dpad {
+      left:max(10px, env(safe-area-inset-left));
+      bottom:calc(10px + env(safe-area-inset-bottom));
+    }
+    .touch-bomb {
+      right:max(12px, env(safe-area-inset-right));
+      bottom:calc(12px + env(safe-area-inset-bottom));
+    }
+  }
+
 </style>
 </head>
 <body class="home-active">
